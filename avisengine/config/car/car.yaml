@@ -1,0 +1,4 @@
+avisengine_car_dynamics:
+    init_pose: [0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0]
+    ignore_collisions: false
+    vehicle_mass: 1.0

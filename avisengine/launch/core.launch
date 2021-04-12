@@ -1,0 +1,15 @@
+<launch>
+  <!-- Network connection for the python connection to AVIS Engine -->
+  <arg name='host' default='127.0.0.1'/>
+  <arg name='port' default='25001'/>
+  
+  <node pkg="avisengine_ros_bridge" name="avisengine_ros_bridge" type="ROSClient.py" output="screen" required="true">
+    <param name="host" value="$(arg host)" unless="$(eval host == '')"/>
+    <param name="port" value="$(arg port)" unless="$(eval port == '')"/>
+  </node>
+
+  <rosparam command="load" file="$(find avisengine)/config/car/car.yaml"/>
+
+  <node type="rviz" name="rviz" pkg="rviz" args="-d $(find avisengine)/rviz/main.rviz"/>
+
+</launch>
